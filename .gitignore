@@ -1,6 +1,5 @@
 TIMES/
 CODE/
-*.pdf*
 .DS_Store
 *.aux
 *.bbl
