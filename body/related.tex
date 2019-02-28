@@ -1,22 +1,42 @@
+%\section{Related Work}
+%	awesome related work!
+%
+%	We need introduce previous work related to unsupervised word alignment in order.
+%
+%	\subsection{Unsupervised Word Alignment}
+%		blah blah
+%
+%	\subsection{Importance weights in Previous work}
+%		We need to 
+%		\begin{itemize}
+%			\item[1] List up approaches how previous work set importance weights for word embeddings.
+%			\item[2] Categprize previous work by the approaches.
+%			\item[3] Locate our approach in the categorization.
+%		\end{itemize}
+
+%	\subsection{Noisyness in Word Alignment}
+%		Noisy embedidngs play key role in our paper.
+%		We need to explain how previous work paid attention to this point, i.e., mitigate the noisyness.
+
 \section{Related Work}
 	awesome related work!
 
 	We need introduce previous work related to unsupervised word alignment in order.
 
+	\subsection{Supervised Word Alignment}
+		In supervised sett, since (Miklov, 2013) show the availability of linear mapping in embedding alignment, many other studies has / had tried to refine the transformation function to improve alignment accuracy. (Xing, 2015) put forward the inconsistency problem caused by improper distance metric of inner product, and solve it by replacing inner product by normalization and orthogonal transform. Beside mapping with a transformation matrix directly, (Fairqui, 2014; Artetxe, 2016; Lifu, 2018) tried mapping different languages into a common space. Some other mapping methods also have been proposed, for example, (Lazaridou, 2015) use max-margin to avoid hubness problem and non-linear projection method has also been explored by (Chandar A P, 2014). 
+
+		To face up to situation with small and even no seed dictionary, lots of prior works gave several solutions. Start from the learning mechanism, self-learning (Artetxe, 2016; Artetxe, 2017) has shown its power to align the words with little supervised data. On the other side, motivated by finding seed pairs automatically by heuristic method, (Chandar A P, 2014) tried to use document-level parallel corpus to help training the auto-encoder between the two language sentences. On the contrary of such explicit method, (Hauer, 2017; Smith, 2017) simply use similar spelling and identical character to generate new seed dictionary pairs. (Vulic, 2016) analyzed the importance of seed dictionary in word alignment, and demonstrate that some external resource of word-level alignment is unnecessary, and some inexpensive automatically induced lexicons even do better. Further more, (Hauer, 2017) use google translation system to generate the seed word pairs and also acquire good result.
+
+
 	\subsection{Unsupervised Word Alignment}
-		blah blah
+		Although the demand for seed dictionary has descended a lot, various alignment tools and corpus are still necessary. Hence, unsupervised methods are explored recently, all in all, most of them can be categorized into three types. Firstly, about GAN based method, (Miceli, 2016) use GAN to train generator to mapping source embedding into target space and discriminator to classify the mapped embeddings and real target embeddings. Base on this method, (Zhang, 2017a) use Wasserstein GAN, (Conneau, 2017) replace linear mapping layer to replace the origin model and (Zhang, 2017b) add orthogonal parameterization to the model. On the other side, (Zhang, 2017a) adopted a totally different method which regards word alignment as an optimal transport problem. On basis of this work, (Grave, 2018) use batch iteration to solve the OT problem by stinkhorn algorithm, however, it suffers from optimization problem due to the uncertainty of distance between two spaces. Moreover, (Melis, 2018) adopted Gromov-Wasserstein method to get rid of the problem mentioned above. Finally, there are also two methods use statistical properties to align embedding (Cao, 2016; Artetxe, 2018). 
+
 
 	\subsection{Importance weights in Previous work}
-		We need to 
-		\begin{itemize}
-			\item[1] List up approaches how previous work set importance weights for word embeddings.
-			\item[2] Categprize previous work by the approaches.
-			\item[3] Locate our approach in the categorization.
-		\end{itemize}
+		To solve the uneven quality problems of word embeddings, most supervised methods only use the high frequency words to learn the transformation mapping. On the unsupervised settings, (Conneau, 2017) propose mutual nearest neighbourhood method which only uses / used reliable word pairs learned by model to acquire orthogonal matrix and achieve great generalization on less frequency words alignment. (Melis, 2018) decrease the influence of low frequency words by sett hyper parameter to decay weight by words frequency manually. 
 
-	\subsection{Noisyness in Word Alignment}
-		Noisy embedidngs play key role in our paper.
-		We need to explain how previous work paid attention to this point, i.e., mitigate the noisyness.
+
 		
 
 
