@@ -7,8 +7,18 @@
 
 \begin{abstract}
 In this paper,
-	we propose novel word alignment methods in unsupervised-method manner.
-\cmnt{write catchy one sentence}
+	we propose novel word alignment methods in unsupervised-method setting.
+The difficulties of word alignment arise from differences between languages:
+	even if words are aligned,
+	the words have different behaviors in details.
+In genellay,
+	gaps between languages lead model performance worse,
+	because word alignment depends on how each word embeddings fit entirely.
+Motivated by this problem,
+	our method introduces importance weight for each word
+	and reweights them dynamically to remove noisy words.
+The reweighting allows us to remove noisy words and achieve extract well-matched pairs.
+We show effectiveness of our methods.
 \end{abstract}
 
 \begin{comment}
