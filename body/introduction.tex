@@ -1,24 +1,126 @@
 \section{Introduction}
-	\begin{comment}
-	awesome introduction.
-	\begin{itemize}
-		\item[Task]{Unsupervised word alignment.}
-		\item[Research Questions]{Word embeddings include noisy vectors for word alignment.}
-		\item[Approach]{Learn importance weights for each vectors to mitigate the noise.}
-	\end{itemize}
-	\end{comment}
 
-	Word align is important task.
+Multi-lingual word alignment is important to transferring knowledge between the languages 
+	by the carrier of word, which is an application of domain adaption. 
+\cmnt{
+	[1] What is main problem in this paper? Domain adaption？ Word align？ or else? Unclear.
+	[2] I can't understand what "by the carrier of word, which is an application of domain adaption" means.
+	}
+\todo{clarify main massage}
+Based on the fundamental concept in cognitive language 
+	that the physiological basis of human beings 
+	plays an important role in formation of concepts and language (Add reference here), 
+	even the disparate origin of the languages has led to barrier of comprehension, 
+	same cognitive mechanism determine the feasibility to transfer the knowledge without supervision. 
+\cmnt{
+	[1]
+	I can't understant grammar of this sentence.
+	[2]
+	Do not use unpractical words such as "cognitive language" and "physiological basis of human beings".
+	[3]
+	I can't understand what this sentense means.}
+\todo{fix grammar}
+For example, 
+	with the cognitive concept that the capital is a center of a entity in country category, 
+	" Tomboy " in French should have a high similarity with " London " in English. 
+\cmnt{
+	[1]Not use "cognitive concept".
+	[2]I can't understand what this example explains.
+	[3] What is the main problem? what is the role of this example?
+	}
+\todo{clarify them.}
 
-	We focus on unsupervised setting.
 
-	Previous work gives importance weight for each vectors
-		using hieistics technique such as frequency.
-	For example, work xxx...
+There are several attempts on applying word distribution model in multi-lingual alignment model, 
+	which we call it multi-lingual distribution model. 
+\cmnt{
+	[1] What is "word distribution model"?
+	[2] What is the Research Question in this paper?
+		"word distribution model" is related to it?
+		Why you explain several attempts about it?
+}
+\todo{You MUST explain our motivations BEFORE describe technical facters.}
 
-	However, such methods are just hieistics
 
-	we propose new method to adjust the importance weight.
+Word embedding has obtained huge success in wide range NLP downstream tasks 
+	like sentiment classification and reading comprehension e. T C (Add reference here) 
+\cmnt{[1]This sentense does not information}
+On the other side, 
+	multi-lingual distribution model aims at solving multi-lingual tasks ranging 
+	from as machine translation to cross-lingual search engine, 
+	which try to get several monolingual embeddings and their correspondences. 
+\cmnt{[1] What is "On the other side" for? [2] I can't understand grammar. }
+Multi-lingual distribution model has been proved to be useful 
+	in cross-lingual transfer learning (Mikolov et al, 2013). 
+\cmnt{No-information}
+\cmnt{What this paragraph aims to explain? Non-information paragraph is unnecessary}
+\todo{remove this paragraph}
 
-	we conduct following experiments to support out approach is effective.
-	
+
+Mikolov et al. (2013a) found that linear relationship exists 
+	on two words embedding spaces by an empirical research, 
+	and show learning the linear mapping with a small starting dictionary can overmatch the neural network.
+\cmnt{How Mikolov's work related to our work??? I can't understand.}
+As a further work, 
+	orthogonal transformations have been shown effective 
+	because its ability to keep distance invariance after transformation (Xing et al, 2015). 
+\cmnt{What is "orthogonal transformations"? I can't understand.}
+
+Nevertheless, 
+	in realistic conditions, 
+	there still exist some language pairs which don not have too much parallel data for learning. 
+\cmnt{[1]What "Nevertheless" for ? [2] What is "realistic"? previous work is not realistic? [3] "there still exist some language pairs which don not have too much parallel data for learning" is our research question? really?}
+To figure out the problem, 
+	semi-supervised and unsupervised methods are developed recently. 
+\cmnt{Non-information}
+They have obtained obvious result even better than supervised methods. 
+\cmnt{Non-information and wrong writing i.e., using vague adjective such as "obvious" and "better" to refer previous work}
+We focus on full-unsupervised method of this research. 
+
+Word embeddings suffer from drawback of uneven quality cause 
+	by different frequency of words. 
+\cmnt{good sentence}
+In unsupervised settings, 
+	because the word embeddings are the only resource we can use, 
+	this problem tends to be a significant factor influencing the accuracy of alignment. 
+\cmnt{Explain "this problem" in more details.}
+To settle this problem, 
+	(Conneau et, 2017) only use mutual nearest words pair 
+	through training to generate orthogonal mapping. 
+On the other side, 
+	(David et, 2018) explicitly sets weight to decay rate 
+	by frequency as hyper parameters to each language 
+	to abate the influence of low frequency words. 
+\cmnt{You should separate these two sentenses describing previous work from this paragraph}
+
+However, 
+	all of these methods only consider the deficiency 
+	in monolingual but pay no attention to the noise in bilingual alignment. 
+\cmnt{Too late explanation about noise. Noisy is core factor in our work}
+There are two main difficulties in bilingual alignment, 
+	the first originated from different semantic of identical entity by cultural difference. 
+\cmnt{I recomment you to explain "There are two main difficulties" in second paragraph in introduction.}
+For example, 
+	different countries may have distinctive attitudes to an entity like color and person. 
+\cmnt{I can't understand this example.}
+Secondly, 
+	high frequency words not always have exact correspondence with / between 
+	the other language such as auxiliary word and symbol which have less information for alignment. 
+\cmnt{What "Secondly" for? I can't understand what this sentence means. }
+
+In this research, 
+	to settle this problem, 
+	we use Sinkhorn algorithm (Sinkhorn, 1964) 
+	to accustom weights of all words which can reduce transformation loss between two embedding sets. 
+Our method achieves 
+	remarkable result and can observably improve the robustness of model to different experiment settings.
+\cmnt{I can't understand how this algorithm settle the noisy problem.}
+
+The contributions to this paper are as follows :
+\begin{itemize}
+	\item We give a systematic introduction to Multilingual distribution models. 
+	\item We present a novel model by modifying the weight to loss of each word automatically and achieve better result than previous State-of-art works.  
+\end{itemize}
+
+
+
