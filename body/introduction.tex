@@ -1,4 +1,67 @@
 \section{Introduction}
+% explain task we tackle
+Multi-lingual word alignment (word alignment) is important to trasfer knowledge between the languages.
+In contrast the number of language,
+	only few language have enough resources to analyse and utlize them.
+Solving multi-lingual word alignment task can be helpful to overcome the problem.
+We focus on the unsupervised setting due to the motivation.
+
+% explain difficulties in our task
+The difficulties of word alignment arise from differences between languages.
+For example,
+	"Tonkatu" in japanese and english has different roles.
+These differences are problematic noisy to estimate alignment between words in different languages.
+\todo{explain more details}
+
+% explain the difficulty/problem we focus on
+One characteristic difference is frequency of words,
+	which leads to different word embeddings.
+In unsupervised settings, 
+	because the word embeddings are the only resource we can use, 
+	this problem tends to be a significant factor influencing the accuracy of alignment. 
+
+% explain why the problem is important
+All of these methods only consider the deficiency 
+	in monolingual but pay no attention to the noise in bilingual alignment. 
+There are two main difficulties in bilingual alignment:
+	the first originated from different semantic of identical entity by cultural difference. 
+Secondly, 
+	high frequency words not always have exact correspondence with / between 
+	the other language such as auxiliary word and symbol which have less information for alignment. 
+
+
+% explain how previous work tackle the problem
+To settle this problem, 
+	(Conneau et, 2017) only use mutual nearest words pair 
+	through training to generate orthogonal mapping. 
+On the other side, 
+	(David et, 2018) explicitly sets weight to decay rate 
+	by frequency as hyper parameters to each language 
+	to abate the influence of low frequency words. 
+
+
+% explain our approach
+In this research, 
+	to settle this problem, 
+	we use Sinkhorn algorithm (Sinkhorn, 1964) 
+	to accustom weights of all words which can reduce transformation loss between two embedding sets. 
+Our method achieves 
+	remarkable result and can observably improve the robustness of model to different experiment settings.
+\cmnt{I can't understand how this algorithm settle the noisy problem.}
+
+
+% sum up our paper
+The contributions to this paper are as follows :
+\begin{itemize}
+	\item We give a systematic introduction to Multilingual distribution models. 
+	\item We present a novel model by modifying the weight to loss of each word automatically and achieve better result than previous State-of-art works.  
+\end{itemize}
+
+
+
+
+
+\begin{comment}
 
 Multi-lingual word alignment is important to transferring knowledge between the languages 
 	by the carrier of word, which is an application of domain adaption. 
@@ -77,21 +140,6 @@ They have obtained obvious result even better than supervised methods.
 \cmnt{Non-information and wrong writing i.e., using vague adjective such as "obvious" and "better" to refer previous work}
 We focus on full-unsupervised method of this research. 
 
-Word embeddings suffer from drawback of uneven quality cause 
-	by different frequency of words. 
-\cmnt{good sentence}
-In unsupervised settings, 
-	because the word embeddings are the only resource we can use, 
-	this problem tends to be a significant factor influencing the accuracy of alignment. 
-\cmnt{Explain "this problem" in more details.}
-To settle this problem, 
-	(Conneau et, 2017) only use mutual nearest words pair 
-	through training to generate orthogonal mapping. 
-On the other side, 
-	(David et, 2018) explicitly sets weight to decay rate 
-	by frequency as hyper parameters to each language 
-	to abate the influence of low frequency words. 
-\cmnt{You should separate these two sentenses describing previous work from this paragraph}
 
 However, 
 	all of these methods only consider the deficiency 
@@ -107,20 +155,6 @@ Secondly,
 	high frequency words not always have exact correspondence with / between 
 	the other language such as auxiliary word and symbol which have less information for alignment. 
 \cmnt{What "Secondly" for? I can't understand what this sentence means. }
-
-In this research, 
-	to settle this problem, 
-	we use Sinkhorn algorithm (Sinkhorn, 1964) 
-	to accustom weights of all words which can reduce transformation loss between two embedding sets. 
-Our method achieves 
-	remarkable result and can observably improve the robustness of model to different experiment settings.
-\cmnt{I can't understand how this algorithm settle the noisy problem.}
-
-The contributions to this paper are as follows :
-\begin{itemize}
-	\item We give a systematic introduction to Multilingual distribution models. 
-	\item We present a novel model by modifying the weight to loss of each word automatically and achieve better result than previous State-of-art works.  
-\end{itemize}
-
+\end{comment}
 
 
